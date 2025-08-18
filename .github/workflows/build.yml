@@ -38,9 +38,15 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.target.name }}
+          name: ${{ matrix.target.name }}-nuget
           path: |
             artifacts/packages/${{ matrix.target.configuration }}/Shipping/*.nupkg
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.name }}
+          path: |
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/coreclr.dll
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/clrjit.dll
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/System.Private.CoreLib.dll
@@ -90,9 +96,15 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.target.name }}
+          name: ${{ matrix.target.name }}-nuget
           path: |
             artifacts/packages/${{ matrix.target.configuration }}/Shipping/*.nupkg
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.name }}
+          path: |
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/libcoreclr.so
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/libclrjit.so
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/System.Private.CoreLib.dll
@@ -133,9 +145,15 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.target.name }}
+          name: ${{ matrix.target.name }}-nuget
           path: |
             artifacts/packages/${{ matrix.target.configuration }}/Shipping/*.nupkg
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target.name }}
+          path: |
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/libcoreclr.dylib
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/libclrjit.dylib
             artifacts/bin/coreclr/${{ matrix.target.release-name }}/System.Private.CoreLib.dll
@@ -152,7 +170,7 @@ jobs:
       - name: Package
         run: |
           for dir in */; do
-            zip "${dir%/}.zip" ${dir}*
+            zip -r "${dir%/}.zip" ${dir}*
           done
 
       - name: Release
