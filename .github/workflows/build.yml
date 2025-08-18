@@ -111,10 +111,10 @@ jobs:
 #           configuration: 'Debug'
 #           build-args: ''
 #           release-name: 'osx.arm64.Debug'
-          - name: osx-x64
-            configuration: 'Release'
-            build-args: '--cross -a x64'
-            release-name: 'osx.x64.Release'
+#         - name: osx-x64
+#           configuration: 'Release'
+#           build-args: '--cross -a x64'
+#           release-name: 'osx.x64.Release'
           - name: osx-arm64
             configuration: 'Release'
             build-args: ''
